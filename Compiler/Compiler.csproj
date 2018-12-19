@@ -1,0 +1,107 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{6FD0C5BE-3ECF-4738-8626-FBA534747C26}</ProjectGuid>
+    <OutputType>Exe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Compiler</RootNamespace>
+    <AssemblyName>Compiler</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <TargetFrameworkProfile>Client</TargetFrameworkProfile>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Lexical\Lexer.cs" />
+    <Compile Include="Lexical\Token.cs" />
+    <Compile Include="Parsing\Ast\Argument.cs" />
+    <Compile Include="Parsing\Ast\ArgumentBlock.cs" />
+    <Compile Include="Parsing\Ast\ArrayDeclare.cs" />
+    <Compile Include="Parsing\Ast\ArrayUseExpression.cs" />
+    <Compile Include="Parsing\Ast\AssignStatement.cs" />
+    <Compile Include="Parsing\Ast\BasicImplementation.cs" />
+    <Compile Include="Parsing\Ast\BlockStatement.cs" />
+    <Compile Include="Parsing\Ast\CallArgument.cs" />
+    <Compile Include="Parsing\Ast\CallFunctionExpression.cs" />
+    <Compile Include="Parsing\Ast\DeclareAndAssignStatement.cs" />
+    <Compile Include="Parsing\Ast\DeclareArgumentBlock.cs" />
+    <Compile Include="Parsing\Ast\DeclareStatement.cs" />
+    <Compile Include="Parsing\Ast\BinaryExpression.cs" />
+    <Compile Include="Parsing\Ast\ExpressionEvalStatement.cs" />
+    <Compile Include="Parsing\Ast\ForStatement.cs" />
+    <Compile Include="Parsing\Ast\FunctionDeclare.cs" />
+    <Compile Include="Parsing\Ast\Gen.cs" />
+    <Compile Include="Parsing\Ast\IConstructive.cs" />
+    <Compile Include="Parsing\Ast\IfStatement.cs" />
+    <Compile Include="Parsing\Ast\ImportStatement.cs" />
+    <Compile Include="Parsing\Ast\ITabControl.cs" />
+    <Compile Include="Parsing\Ast\ProcedureDeclare.cs" />
+    <Compile Include="Parsing\Ast\IExpression.cs" />
+    <Compile Include="Parsing\Ast\IStatement.cs" />
+    <Compile Include="Parsing\Ast\NumberConstantExpression.cs" />
+    <Compile Include="Parsing\Ast\ParenExpression.cs" />
+    <Compile Include="Parsing\Ast\PrintStatement.cs" />
+    <Compile Include="Parsing\Ast\ReturnStatement.cs" />
+    <Compile Include="Parsing\Ast\VariableExpression.cs" />
+    <Compile Include="Parsing\Ast\WhileStatement.cs" />
+    <Compile Include="Parsing\Parser\ASTMaker.cs" />
+    <Compile Include="Parsing\Ast\TextConstantExpression.cs" />
+    <Compile Include="Parsing\Parser\ParserException.cs" />
+    <Compile Include="Parsing\Parser\ParserType.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="bin\Debug\Compiler.exe" />
+    <Content Include="bin\Debug\Compiler.pdb" />
+    <Content Include="bin\Debug\Compiler.vshost.exe" />
+    <Content Include="bin\Release\Compiler.exe" />
+    <Content Include="bin\Release\Compiler.pdb" />
+    <Content Include="bin\Release\Compiler.vshost.exe" />
+    <Content Include="bin\Release\Output.bas" />
+    <Content Include="bin\Release\Output.exe" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="bin\Debug\Test.compiler" />
+    <None Include="bin\Release\Compiler.vshost.exe.manifest" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
