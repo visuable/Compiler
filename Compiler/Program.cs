@@ -9,59 +9,27 @@ namespace Compiler
 {
     internal class Program
     {
-        private const string FreeBasicCompilerPath = @"fbc\fbc.exe";
-        private const string FreeBasicCompilerArgument = "Output.bas -O 3";
 
         private static void Main(string[] args)
         {
-            var text = ArgumentHandler(args);
-            var lexer = new Lexer(text);
+            if(args.Length == 0) return;
+            var lexer = new Lexer(new StreamReader(args[0]).ReadToEnd());
             var parser = new ASTMaker(lexer);
             var statements = parser.ParseTokens();
-            foreach (var item in lexer.Tokens) Console.WriteLine(item);
-
-            var save = SetOutput(out var writerSave);
-            ((IStatement) statements).Execute();
-            Restore(save);
             if (parser.ParseErrors.Count > 0)
-                foreach (var error in parser.ParseErrors)
-                    throw error;
-            try
             {
-                Process.Start(new ProcessStartInfo(FreeBasicCompilerPath, FreeBasicCompilerArgument));
+                foreach(var error in parser.ParseErrors) Console.WriteLine(error.Message);
             }
-            catch
-            {
-                Console.WriteLine("Compiler does not exists");
-            }
-
-            writerSave.Close();
+            SetOutput(out var writer);
+            ((IStatement)statements).Execute();
+            Restore(writer);
         }
 
-        private static string ArgumentHandler(string[] args)
+        private static void SetOutput(out TextWriter writerSave)
         {
-            if (args.Length == 0) throw new ArgumentNullException("Empty argument: usage file");
-            if (args.Length > 1) throw new ArgumentException("Invalid count arguments: usage file");
-            var reader = new StreamReader(args[0]);
-            try
-            {
-                return reader.ReadToEnd();
-            }
-            catch
-            {
-                Console.WriteLine("File does not exists");
-            }
-
-            return "";
-        }
-
-        private static TextWriter SetOutput(out StreamWriter writerSave)
-        {
-            var tmp = Console.Out;
-            var writer = new StreamWriter("Output.bas");
-            writerSave = writer;
+            var writer = new StreamWriter(Path.Combine(Settings.Default.OutputPath, "output"));
+            writerSave = Console.Out;
             Console.SetOut(writer);
-            return tmp;
         }
 
         private static void Restore(TextWriter w)

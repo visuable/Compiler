@@ -45,10 +45,10 @@ namespace Compiler.Parsing.Ast
             if (_containElse)
             {
                 Console.WriteLine("Else");
-                ((IConstructive) _elseStatement).NoNewLine();
+                ((IConstructive) _elseStatement).NewLine();
             }
 
-            Console.WriteLine("Endif");
+            Console.Write("Endif");
         }
 
         Type IStatement.CalledBy { get; set; }

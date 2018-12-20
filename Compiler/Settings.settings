@@ -1,0 +1,18 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="Compiler" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="OutputLanguage" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Basic</Value>
+    </Setting>
+    <Setting Name="PathToOutputTranslator" Type="System.String" Scope="User">
+      <Value Profile="(Default)">C:\Users\XD\Documents\Visual Studio 2010\Projects\Compiler\Compiler\bin\Debug</Value>
+    </Setting>
+    <Setting Name="ArgumentsOutputTranslator" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="OutputPath" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+  </Settings>
+</SettingsFile>

@@ -1,0 +1,24 @@
+﻿program -> statements
+statements -> include | for | while | function | procedure | call | show | if | declare | block | return | assign | expression
+include -> 'excl' string
+for -> 'for' assign ';' expression block
+while -> 'while' expression block
+function -> 'fun' arguments type block
+procedure -> 'proc' arguments block
+call -> 'call' id callArguments
+show -> expression
+if -> 'if' expression block ('else' expression block)?
+declare -> type ('id' | assign) | array
+block -> '{' statements '}'
+return -> 'ret' ('.' | expression)
+assign -> id '=' expression
+expression -> summary (('|' | '&') summmary)
+summary -> mul (('+' | '-') mul)
+mul -> factor (('*' | '/') factor)
+factor -> id | call | '(' expression ')' | NUM | STR | DB
+string -> '"' . '"'
+arguments -> (type id ',')* 
+callArguments -> (expression ',')
+id -> ID 
+array -> id type ('[ expression ]')*
+type -> 'int' | 'db' | 'str'
